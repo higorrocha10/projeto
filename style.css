@@ -83,11 +83,16 @@ body * {
   left: 0;
   z-index: 1;
   transform: translateY(-50%);
+
+  animation: interruptor-off 0.3s;
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: interruptor-on 0.4s forwards; /* forwards --> Mantener las propriedades definidas */
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -159,7 +164,7 @@ footer {
   font-size: 16px;
 }
 
-/* media queries */
+/* media queries : Cambia el tamaño del fondo según el tamaño del dispositivo */
 @media (min-widht: 700px) {
   :root {
     --bg-url: url(./assets/bg-desktop.jpg);
@@ -167,5 +172,24 @@ footer {
 
   .light {
     --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+
+/* Animaciones CSS */
+@keyframes interruptor-on {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes interruptor-off {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0%;
   }
 }
